@@ -1,0 +1,52 @@
+@use '@/styles/variables.scss' as *;
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  font-weight: $font-weight-medium;
+  border-radius: $radius-sm;
+  white-space: nowrap;
+}
+
+.size-sm {
+  padding: 4rpx 12rpx;
+  font-size: $font-size-xs;
+  line-height: 1.4;
+}
+
+.size-md {
+  padding: 8rpx 18rpx;
+  font-size: $font-size-sm;
+  line-height: 1.4;
+}
+
+.variant-default {
+  background: $color-bg-card-secondary;
+  color: $color-text-secondary;
+}
+
+.variant-primary {
+  background: $color-primary-soft;
+  color: $color-primary;
+}
+
+.variant-accent {
+  background: rgba(166, 123, 91, 0.1);
+  color: $color-accent;
+}
+
+.variant-success {
+  background: rgba(47, 143, 95, 0.1);
+  color: $color-success;
+}
+
+.variant-warning {
+  background: $color-highlight-soft;
+  color: $color-warning;
+}
+
+.variant-ghost {
+  background: transparent;
+  border: 1rpx solid $color-border;
+  color: $color-text-secondary;
+}

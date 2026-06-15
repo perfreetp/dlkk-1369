@@ -1,0 +1,135 @@
+@use '@/styles/variables.scss' as *;
+
+.card {
+  @include card-base;
+  overflow: hidden;
+  @include press-feedback;
+}
+
+.cardFull {
+  padding: 0;
+}
+
+.cardBody {
+  padding: $spacing-lg;
+}
+
+.heroImage {
+  width: 100%;
+  height: 320rpx;
+  display: block;
+}
+
+.topRow {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: $spacing-md;
+}
+
+.speciesInfo {
+  display: flex;
+  align-items: center;
+  gap: $spacing-md;
+  flex: 1;
+  min-width: 0;
+}
+
+.thumb {
+  width: 88rpx;
+  height: 88rpx;
+  border-radius: $radius-md;
+  flex-shrink: 0;
+  background: $color-bg-card-secondary;
+}
+
+.speciesText {
+  flex: 1;
+  min-width: 0;
+}
+
+.speciesName {
+  font-size: $font-size-lg;
+  font-weight: $font-weight-semibold;
+  color: $color-text-primary;
+  display: block;
+  @include text-ellipsis;
+}
+
+.metaRow {
+  display: flex;
+  align-items: center;
+  margin-top: 6rpx;
+  flex-wrap: wrap;
+}
+
+.metaText {
+  font-size: $font-size-xs;
+  color: $color-text-tertiary;
+}
+
+.metaDot {
+  margin: 0 8rpx;
+  color: $color-text-disabled;
+  font-size: $font-size-xs;
+}
+
+.countBadge {
+  background: $color-primary-soft;
+  padding: 6rpx 16rpx;
+  border-radius: $radius-round;
+  flex-shrink: 0;
+}
+
+.countText {
+  font-size: $font-size-sm;
+  font-weight: $font-weight-semibold;
+  color: $color-primary;
+}
+
+.locationRow {
+  display: flex;
+  align-items: center;
+  gap: 8rpx;
+  margin-top: $spacing-md;
+}
+
+.locationIcon {
+  font-size: $font-size-sm;
+}
+
+.locationText {
+  font-size: $font-size-sm;
+  color: $color-text-secondary;
+  @include text-ellipsis;
+  flex: 1;
+}
+
+.tagsWrap {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $spacing-sm;
+  margin-top: $spacing-md;
+}
+
+.notes {
+  display: block;
+  margin-top: $spacing-md;
+  font-size: $font-size-sm;
+  color: $color-text-secondary;
+  line-height: $line-height-normal;
+}
+
+.alertRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: $spacing-md;
+}
+
+.relativeTime {
+  font-size: $font-size-xs;
+  color: $color-text-tertiary;
+  margin-top: $spacing-md;
+  display: block;
+}

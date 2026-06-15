@@ -1,0 +1,291 @@
+@use '@/styles/variables.scss' as *;
+
+.page {
+  min-height: 100vh;
+  background: $color-bg-page;
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+.scrollView {
+  height: 100vh;
+  box-sizing: border-box;
+}
+
+/* 头部卡 */
+.headerCard {
+  background: linear-gradient(135deg, $color-primary, $color-primary-gradient-end);
+  padding: 48rpx $space-6 80rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.headerMonthLabel {
+  font-size: 44rpx;
+  font-weight: 700;
+  color: white;
+  display: block;
+}
+
+.headerSubtitle {
+  font-size: 24rpx;
+  color: rgba(255,255,255,0.7);
+  margin-top: 8rpx;
+  display: block;
+}
+
+.headerBadge {
+  padding: 12rpx 24rpx;
+  background: rgba(255,255,255,0.15);
+  border-radius: 999rpx;
+  border: 1px solid rgba(255,255,255,0.2);
+}
+
+/* 核心统计 */
+.coreStats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: $space-3;
+  padding: 0 $space-4;
+  margin-top: -40rpx;
+  position: relative;
+  z-index: 10;
+}
+
+.section {
+  @include card-base;
+  margin: $space-4;
+  padding: $space-6;
+}
+
+.sectionTitle {
+  font-size: $font-size-display-lg;
+  font-weight: 600;
+  color: $color-text-primary;
+  margin-bottom: $space-5;
+  display: block;
+}
+
+/* 柱状图 */
+.barChart {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: $space-3;
+  height: 320rpx;
+  padding: $space-3 0;
+}
+
+.barCol {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+}
+
+.barValue {
+  font-size: 22rpx;
+  font-weight: 600;
+  color: $color-primary;
+  height: 32rpx;
+}
+
+.barTrack {
+  flex: 1;
+  width: 100%;
+  max-width: 56rpx;
+  background: $color-bg-page;
+  border-radius: $radius-md $radius-md 0 0;
+  overflow: hidden;
+  display: flex;
+  align-items: flex-end;
+  margin: $space-2 0;
+}
+
+.barFill {
+  width: 100%;
+  background: linear-gradient(to top, $color-primary, rgba($color-primary, 0.6));
+  border-radius: $radius-md $radius-md 0 0;
+  min-height: 4rpx;
+  transition: height 0.3s ease;
+}
+
+.barLabel {
+  font-size: 20rpx;
+  color: $color-text-tertiary;
+}
+
+/* 排行项目 */
+.rankItem {
+  display: flex;
+  align-items: center;
+  padding: $space-3 0;
+  border-bottom: 1px solid $color-divider;
+
+  &:last-child { border-bottom: none; }
+}
+
+.rankBadge {
+  width: 48rpx;
+  height: 48rpx;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24rpx;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.rankCount {
+  text-align: center;
+  padding: $space-2 $space-4;
+  background: $color-bg-page;
+  border-radius: $radius-md;
+  margin-left: $space-3;
+  flex-shrink: 0;
+}
+
+.rankCountNum {
+  font-size: $font-size-display-lg;
+  font-weight: 700;
+  color: $color-accent;
+  display: block;
+}
+
+.rankCountUnit {
+  font-size: 20rpx;
+  color: $color-text-tertiary;
+}
+
+/* 新物种横滑 */
+.newSpeciesScroll {
+  white-space: nowrap;
+  margin: 0 (-$space-6);
+  padding: 0 $space-6 $space-3;
+}
+
+.newSpeciesCard {
+  display: inline-block;
+  width: 240rpx;
+  margin-right: $space-3;
+  background: white;
+  border-radius: $radius-lg;
+  overflow: hidden;
+  vertical-align: top;
+
+  @include press-feedback;
+}
+
+.newSpeciesImg {
+  width: 100%;
+  height: 180rpx;
+}
+
+.newSpeciesInfo {
+  padding: $space-3;
+}
+
+.newSpeciesName {
+  font-size: $font-size-body-md;
+  font-weight: 600;
+  color: $color-text-primary;
+  display: block;
+}
+
+.newSpeciesLatin {
+  font-size: 20rpx;
+  color: $color-text-tertiary;
+  font-style: italic;
+  display: block;
+  margin-top: 4rpx;
+}
+
+/* 地点进度条 */
+.locItem {
+  padding: $space-3 0;
+  border-bottom: 1px solid $color-divider;
+
+  &:last-child { border-bottom: none; }
+}
+
+.locBarTrack {
+  height: 12rpx;
+  background: $color-bg-page;
+  border-radius: 999rpx;
+  overflow: hidden;
+}
+
+.locBarFill {
+  height: 100%;
+  background: linear-gradient(to right, $color-primary, $color-accent);
+  border-radius: 999rpx;
+  transition: width 0.3s ease;
+}
+
+/* 成就 */
+.achievementRow {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: $space-3;
+}
+
+.achievementItem {
+  position: relative;
+  padding: $space-4;
+  background: rgba(255,255,255,0.06);
+  border-radius: $radius-lg;
+  border: 1px solid rgba(255,255,255,0.08);
+  text-align: center;
+}
+
+.achievementOk {
+  background: rgba($color-highlight, 0.12);
+  border-color: rgba($color-highlight, 0.3);
+}
+
+.achievementLabel {
+  font-size: $font-size-body-md;
+  font-weight: 600;
+  color: white;
+  display: block;
+}
+
+.achievementDesc {
+  font-size: 20rpx;
+  color: rgba(255,255,255,0.5);
+  display: block;
+  margin-top: 4rpx;
+}
+
+.achievementCheck {
+  position: absolute;
+  top: $space-3;
+  right: $space-3;
+  width: 36rpx;
+  height: 36rpx;
+  border-radius: 50%;
+  font-size: 22rpx;
+  color: $color-highlight;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* 导出按钮 */
+.exportBtn {
+  height: 96rpx;
+  background: linear-gradient(135deg, $color-primary, $color-primary-gradient-end);
+  border-radius: $radius-xl;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: $font-size-body-lg;
+  font-weight: 600;
+  box-shadow: 0 8rpx 24rpx rgba($color-primary, 0.25);
+
+  @include press-feedback;
+}

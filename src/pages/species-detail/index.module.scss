@@ -1,0 +1,272 @@
+@use '@/styles/variables.scss' as *;
+
+.page {
+  min-height: 100vh;
+  background: $color-bg-page;
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+.scrollView {
+  height: 100vh;
+  box-sizing: border-box;
+}
+
+/* 画廊 */
+.gallery {
+  position: relative;
+  width: 100%;
+  height: 560rpx;
+  background: #000;
+}
+
+.galleryMain {
+  width: 100%;
+  height: 100%;
+}
+
+.galleryIndicator {
+  position: absolute;
+  bottom: 24rpx;
+  right: 24rpx;
+  background: rgba(0,0,0,0.6);
+  color: white;
+  font-size: 22rpx;
+  padding: 8rpx 20rpx;
+  border-radius: 999rpx;
+}
+
+.thumbScroll {
+  white-space: nowrap;
+  padding: $space-4;
+  background: white;
+}
+
+.thumbItem {
+  display: inline-block;
+  width: 120rpx;
+  height: 120rpx;
+  margin-right: $space-3;
+  border-radius: $radius-md;
+  overflow: hidden;
+  opacity: 0.6;
+  border: 3rpx solid transparent;
+}
+
+.thumbItemActive {
+  opacity: 1;
+  border-color: $color-primary;
+}
+
+.thumbImg {
+  width: 100%;
+  height: 100%;
+}
+
+/* 名称区 */
+.nameSection {
+  padding: $space-6 $space-5;
+  background: white;
+  border-bottom: 1px solid $color-divider;
+}
+
+.commonName {
+  font-size: $font-size-display-2xl;
+  font-weight: 700;
+  color: $color-text-primary;
+  display: inline-block;
+}
+
+.latinName {
+  font-size: $font-size-body-md;
+  color: $color-text-tertiary;
+  font-style: italic;
+  margin-top: 8rpx;
+  display: block;
+}
+
+/* 操作按钮 */
+.actionRow {
+  display: flex;
+  gap: $space-4;
+  padding: $space-5;
+  background: white;
+  border-bottom: 1px solid $color-divider;
+}
+
+.actionBtn {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: $space-4;
+  background: $color-bg-page;
+  border-radius: $radius-lg;
+  font-size: $font-size-body-md;
+  color: $color-text-secondary;
+  font-weight: 500;
+
+  @include press-feedback;
+}
+
+.actionBtnActive {
+  background: rgba($color-highlight, 0.1);
+  color: $color-highlight-darker;
+}
+
+.section {
+  @include card-base;
+  margin: $space-4;
+  padding: $space-6;
+}
+
+.sectionTitle {
+  font-size: $font-size-display-lg;
+  font-weight: 600;
+  color: $color-text-primary;
+  margin-bottom: $space-5;
+  display: block;
+}
+
+.description {
+  font-size: $font-size-body-md;
+  color: $color-text-secondary;
+  line-height: 1.7;
+}
+
+/* 识别要点 */
+.appearanceList {
+  display: flex;
+  flex-direction: column;
+  gap: $space-3;
+}
+
+.appearanceItem {
+  display: flex;
+  align-items: flex-start;
+  gap: $space-3;
+}
+
+.appearanceDot {
+  width: 12rpx;
+  height: 12rpx;
+  border-radius: 50%;
+  background: $color-accent;
+  margin-top: 18rpx;
+  flex-shrink: 0;
+}
+
+.appearanceText {
+  font-size: $font-size-body-md;
+  color: $color-text-primary;
+  line-height: 1.6;
+  flex: 1;
+}
+
+/* 信息网格 */
+.infoGrid {
+  display: flex;
+  flex-direction: column;
+  gap: $space-4;
+}
+
+.infoItem {
+  padding: $space-4;
+  background: $color-bg-page;
+  border-radius: $radius-md;
+}
+
+.infoLabel {
+  font-size: $font-size-body-sm;
+  color: $color-text-tertiary;
+  display: block;
+  margin-bottom: 6rpx;
+}
+
+.infoValue {
+  font-size: $font-size-body-md;
+  color: $color-text-primary;
+  font-weight: 500;
+  line-height: 1.5;
+}
+
+/* 叫声 */
+.callCard {
+  display: flex;
+  align-items: center;
+  gap: $space-4;
+  padding: $space-4;
+  background: linear-gradient(135deg, rgba($color-primary, 0.06), rgba($color-accent, 0.04));
+  border-radius: $radius-lg;
+}
+
+.callPlay {
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 50%;
+  background: $color-primary;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28rpx;
+  flex-shrink: 0;
+}
+
+.callText {
+  font-size: $font-size-body-md;
+  color: $color-text-primary;
+  font-style: italic;
+  display: block;
+  margin-bottom: $space-2;
+}
+
+.callWave {
+  display: flex;
+  align-items: flex-end;
+  gap: 3rpx;
+  height: 48rpx;
+}
+
+.callWaveBar {
+  flex: 1;
+  background: linear-gradient(to top, rgba($color-primary, 0.2), $color-primary);
+  border-radius: 2rpx;
+  opacity: 0.7;
+}
+
+/* 观察记录 */
+.observationList {
+  display: flex;
+  flex-direction: column;
+  gap: $space-3;
+}
+
+.moreBtn {
+  text-align: center;
+  padding: $space-4;
+  color: $color-primary;
+  font-size: $font-size-body-md;
+  font-weight: 500;
+}
+
+/* 易混淆物种 */
+.similarCard {
+  padding: $space-3;
+  background: $color-bg-page;
+  border-radius: $radius-lg;
+  border: 1px solid $color-divider;
+}
+
+.compareBtn {
+  margin-top: $space-3;
+  padding: $space-3;
+  text-align: center;
+  background: white;
+  border-radius: $radius-md;
+  font-size: $font-size-body-md;
+  color: $color-primary;
+  font-weight: 500;
+  border: 1px dashed rgba($color-primary, 0.3);
+
+  @include press-feedback;
+}

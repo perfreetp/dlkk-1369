@@ -1,0 +1,203 @@
+@use '@/styles/variables.scss' as *;
+
+.page {
+  min-height: 100vh;
+  background: $color-bg-page;
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+.scrollView {
+  height: 100vh;
+  box-sizing: border-box;
+}
+
+/* 封面 */
+.cover {
+  position: relative;
+  width: 100%;
+  height: 440rpx;
+  background: #000;
+}
+
+.coverImg {
+  width: 100%;
+  height: 100%;
+}
+
+.coverGradient {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 280rpx;
+  background: linear-gradient(transparent, rgba(0,0,0,0.85));
+}
+
+.coverInfo {
+  position: absolute;
+  left: $space-5;
+  right: $space-5;
+  bottom: $space-5;
+}
+
+.tripTitle {
+  font-size: $font-size-display-2xl;
+  font-weight: 700;
+  color: white;
+  line-height: 1.3;
+}
+
+/* 统计 */
+.statsGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: $space-3;
+  padding: $space-4;
+  margin-top: -40rpx;
+  position: relative;
+  z-index: 10;
+}
+
+/* 操作按钮行 */
+.actionRow {
+  display: flex;
+  gap: $space-4;
+  padding: 0 $space-5;
+  margin-bottom: $space-4;
+}
+
+.actionBtn {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: $space-4;
+  background: white;
+  border-radius: $radius-lg;
+  font-size: $font-size-body-md;
+  color: $color-text-secondary;
+  font-weight: 500;
+  border: 1px solid $color-divider;
+
+  @include press-feedback;
+}
+
+.actionBtnPrimary {
+  background: linear-gradient(135deg, $color-primary, $color-primary-gradient-end);
+  color: white;
+  border-color: transparent;
+  box-shadow: 0 6rpx 16rpx rgba($color-primary, 0.2);
+}
+
+.section {
+  @include card-base;
+  margin: $space-4;
+  padding: $space-6;
+}
+
+.sectionTitle {
+  font-size: $font-size-display-lg;
+  font-weight: 600;
+  color: $color-text-primary;
+  margin-bottom: $space-5;
+  display: block;
+}
+
+/* 物种清单 */
+.speciesList {
+  display: flex;
+  flex-direction: column;
+  gap: $space-3;
+}
+
+/* 备注 */
+.notesCard {
+  padding: $space-4;
+  background: $color-bg-page;
+  border-radius: $radius-lg;
+  border-left: 6rpx solid $color-accent;
+}
+
+.notesText {
+  font-size: $font-size-body-md;
+  color: $color-text-secondary;
+  line-height: 1.7;
+}
+
+/* 时间线 */
+.timeline {
+  position: relative;
+}
+
+.timelineItem {
+  position: relative;
+  padding-left: 48rpx;
+  margin-bottom: $space-5;
+
+  &:last-child { margin-bottom: 0; }
+}
+
+.timelineDot {
+  position: absolute;
+  left: 0;
+  top: 8rpx;
+  width: 24rpx;
+  height: 24rpx;
+  border-radius: 50%;
+  background: $color-primary;
+  border: 4rpx solid white;
+  box-shadow: 0 0 0 2rpx rgba($color-primary, 0.3);
+}
+
+.timelineLine {
+  position: absolute;
+  left: 10rpx;
+  top: 36rpx;
+  bottom: -$space-5;
+  width: 2rpx;
+  background: $color-divider;
+}
+
+.timelineContent {
+  flex: 1;
+}
+
+.timelineTime {
+  display: flex;
+  align-items: center;
+  margin-bottom: $space-2;
+}
+
+/* 底部栏 */
+.bottomBar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  gap: $space-4;
+  padding: $space-4 $space-5 calc(#{$space-4} + env(safe-area-inset-bottom));
+  background: white;
+  box-shadow: 0 -4rpx 24rpx rgba(0,0,0,0.06);
+}
+
+.bottomBtn {
+  flex: 1;
+  height: 96rpx;
+  border-radius: $radius-xl;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: $font-size-body-lg;
+  font-weight: 600;
+  background: $color-bg-page;
+  color: $color-text-secondary;
+
+  @include press-feedback;
+}
+
+.bottomBtnPrimary {
+  background: linear-gradient(135deg, $color-primary, $color-primary-gradient-end);
+  color: white;
+  box-shadow: 0 8rpx 20rpx rgba($color-primary, 0.25);
+}

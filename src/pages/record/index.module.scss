@@ -1,0 +1,237 @@
+@use '@/styles/variables.scss' as *;
+
+.page {
+  min-height: 100vh;
+  background: $color-bg-page;
+  padding-bottom: 180rpx;
+}
+
+.container {
+  padding: 0 $page-padding;
+}
+
+.header {
+  padding: $spacing-xl 0 $spacing-lg;
+}
+
+.pageTitle {
+  font-size: $font-size-xxl;
+  font-weight: $font-weight-bold;
+  color: $color-text-primary;
+  display: block;
+}
+
+.pageSubtitle {
+  margin-top: 8rpx;
+  font-size: $font-size-sm;
+  color: $color-text-tertiary;
+  display: block;
+}
+
+.filterBar {
+  @include card-base;
+  padding: $spacing-sm;
+  margin-bottom: $spacing-md;
+  display: flex;
+  gap: $spacing-sm;
+}
+
+.filterChip {
+  flex: 1;
+  padding: 16rpx 0;
+  border-radius: $radius-md;
+  text-align: center;
+  font-size: $font-size-sm;
+  font-weight: $font-weight-medium;
+  color: $color-text-secondary;
+  @include press-feedback;
+}
+
+.filterChipActive {
+  background: $color-primary;
+  color: $color-text-white;
+  box-shadow: 0 4rpx 12rpx rgba(47, 107, 79, 0.2);
+}
+
+.alertSection {
+  margin-bottom: $spacing-md;
+}
+
+.alertCard {
+  @include card-base;
+  padding: $spacing-lg;
+  background: linear-gradient(135deg, rgba(201, 130, 20, 0.08) 0%, rgba(212, 168, 67, 0.05) 100%);
+  border: 1rpx solid rgba(201, 130, 20, 0.2);
+  @include press-feedback;
+}
+
+.alertTop {
+  display: flex;
+  align-items: center;
+  gap: $spacing-sm;
+  margin-bottom: $spacing-sm;
+}
+
+.alertIcon {
+  font-size: 36rpx;
+}
+
+.alertTitle {
+  font-size: $font-size-lg;
+  font-weight: $font-weight-semibold;
+  color: $color-warning;
+}
+
+.alertBadge {
+  margin-left: auto;
+  background: $color-warning;
+  color: $color-text-white;
+  font-size: $font-size-xs;
+  font-weight: $font-weight-bold;
+  padding: 4rpx 16rpx;
+  border-radius: $radius-round;
+}
+
+.alertDesc {
+  font-size: $font-size-sm;
+  color: $color-text-secondary;
+  line-height: $line-height-normal;
+}
+
+.draftSection {
+  margin-bottom: $spacing-md;
+}
+
+.draftCard {
+  @include card-base;
+  padding: $spacing-lg;
+  background: linear-gradient(135deg, rgba(166, 123, 91, 0.08) 0%, rgba(166, 123, 91, 0.03) 100%);
+  border: 1rpx solid rgba(166, 123, 91, 0.2);
+}
+
+.draftHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: $spacing-md;
+}
+
+.draftTitle {
+  font-size: $font-size-lg;
+  font-weight: $font-weight-semibold;
+  color: $color-accent;
+  display: flex;
+  align-items: center;
+  gap: 8rpx;
+}
+
+.draftBadge {
+  background: $color-accent;
+  color: $color-text-white;
+  font-size: $font-size-xs;
+  font-weight: $font-weight-bold;
+  padding: 4rpx 16rpx;
+  border-radius: $radius-round;
+}
+
+.draftList {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-sm;
+}
+
+.draftItem {
+  display: flex;
+  align-items: center;
+  gap: $spacing-md;
+  padding: $spacing-md;
+  background: $color-bg-card;
+  border-radius: $radius-md;
+  @include press-feedback;
+}
+
+.draftThumb {
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: $radius-sm;
+  background: $color-bg-card-secondary;
+  flex-shrink: 0;
+}
+
+.draftInfo {
+  flex: 1;
+  min-width: 0;
+}
+
+.draftName {
+  font-size: $font-size-md;
+  font-weight: $font-weight-semibold;
+  color: $color-text-primary;
+  @include text-ellipsis;
+  display: block;
+}
+
+.draftMeta {
+  margin-top: 4rpx;
+  font-size: $font-size-xs;
+  color: $color-text-tertiary;
+  display: block;
+}
+
+.draftContinue {
+  background: $color-accent;
+  color: $color-text-white;
+  font-size: $font-size-xs;
+  font-weight: $font-weight-semibold;
+  padding: 10rpx 20rpx;
+  border-radius: $radius-button;
+  flex-shrink: 0;
+}
+
+.listHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: $spacing-md 0 $spacing-sm;
+}
+
+.listTitle {
+  font-size: $font-size-lg;
+  font-weight: $font-weight-semibold;
+  color: $color-text-primary;
+}
+
+.listCount {
+  font-size: $font-size-sm;
+  color: $color-text-tertiary;
+}
+
+.obsList {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-md;
+}
+
+.fabButton {
+  position: fixed;
+  right: $spacing-xl;
+  bottom: calc(env(safe-area-inset-bottom) + 140rpx);
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: $radius-round;
+  background: linear-gradient(135deg, $color-primary 0%, $color-primary-light 100%);
+  box-shadow: 0 8rpx 32rpx rgba(47, 107, 79, 0.35);
+  @include flex-center;
+  z-index: 99;
+  @include press-feedback;
+}
+
+.fabIcon {
+  font-size: 52rpx;
+  color: $color-text-white;
+  line-height: 1;
+}
+
+.emptyWrap {
+  margin-top: $spacing-2xl;
+}

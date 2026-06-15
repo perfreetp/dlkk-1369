@@ -1,0 +1,202 @@
+@use '@/styles/variables.scss' as *;
+
+.page {
+  min-height: 100vh;
+  background: $color-bg-page;
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+.scrollView {
+  height: 100vh;
+  box-sizing: border-box;
+}
+
+.section {
+  @include card-base;
+  margin: $space-4;
+  padding: $space-6;
+}
+
+.sectionTitle {
+  font-size: $font-size-display-lg;
+  font-weight: 600;
+  color: $color-text-primary;
+  margin-bottom: $space-5;
+  display: block;
+}
+
+.filterBtn {
+  font-size: $font-size-body-sm;
+  color: $color-primary;
+  font-weight: 500;
+}
+
+/* 表单 */
+.formItem {
+  margin-bottom: $space-5;
+
+  &:last-child { margin-bottom: 0; }
+}
+
+.formLabel {
+  font-size: $font-size-body-md;
+  color: $color-text-secondary;
+  margin-bottom: $space-3;
+  display: block;
+}
+
+.input {
+  width: 100%;
+  height: 88rpx;
+  background: $color-bg-page;
+  border-radius: $radius-md;
+  padding: 0 $space-4;
+  font-size: $font-size-body-md;
+  color: $color-text-primary;
+  box-sizing: border-box;
+}
+
+.textarea {
+  width: 100%;
+  min-height: 160rpx;
+  background: $color-bg-page;
+  border-radius: $radius-md;
+  padding: $space-4;
+  font-size: $font-size-body-md;
+  color: $color-text-primary;
+  box-sizing: border-box;
+}
+
+.placeholder {
+  color: $color-text-tertiary;
+}
+
+/* 预览卡 */
+.previewCard {
+  background: linear-gradient(135deg, rgba($color-primary, 0.06), rgba($color-accent, 0.04));
+  border-radius: $radius-lg;
+  padding: $space-4;
+  border: 1px solid rgba($color-primary, 0.1);
+}
+
+.previewRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: $space-3 0;
+  border-bottom: 1px dashed $color-divider;
+
+  &:last-child { border-bottom: none; }
+}
+
+.previewLabel {
+  font-size: $font-size-body-md;
+  color: $color-text-secondary;
+}
+
+.previewValue {
+  font-size: $font-size-body-md;
+  color: $color-text-primary;
+  font-weight: 500;
+  text-align: right;
+  max-width: 60%;
+}
+
+/* 记录卡片 */
+.obsCard {
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: $space-3;
+  background: $color-bg-page;
+  border-radius: $radius-lg;
+  border: 2px solid transparent;
+  transition: all 0.2s;
+
+  @include press-feedback;
+}
+
+.obsCardSelected {
+  background: rgba($color-primary, 0.06);
+  border-color: $color-primary;
+}
+
+.checkbox {
+  padding-right: $space-3;
+  flex-shrink: 0;
+}
+
+.checkInner {
+  width: 44rpx;
+  height: 44rpx;
+  border-radius: 50%;
+  border: 2px solid $color-divider;
+  background: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.checkInnerChecked {
+  background: $color-primary;
+  border-color: $color-primary;
+}
+
+.obsImg {
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: $radius-md;
+  flex-shrink: 0;
+}
+
+.obsInfo {
+  flex: 1;
+  margin-left: $space-4;
+  min-width: 0;
+}
+
+.obsName {
+  font-size: $font-size-body-lg;
+  font-weight: 600;
+  color: $color-text-primary;
+  display: block;
+}
+
+/* 底部操作栏 */
+.bottomBar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  gap: $space-4;
+  padding: $space-4 $space-5 calc(#{$space-4} + env(safe-area-inset-bottom));
+  background: white;
+  box-shadow: 0 -4rpx 24rpx rgba(0,0,0,0.06);
+}
+
+.saveBtn {
+  flex: 1;
+  height: 96rpx;
+  border-radius: $radius-xl;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: $font-size-body-lg;
+  font-weight: 600;
+
+  @include press-feedback;
+}
+
+.saveDraftBtn {
+  background: $color-bg-page;
+  color: $color-text-secondary;
+  flex: 0.6;
+}
+
+.saveConfirmBtn {
+  background: linear-gradient(135deg, $color-primary, $color-primary-gradient-end);
+  color: white;
+  box-shadow: 0 8rpx 20rpx rgba($color-primary, 0.25);
+  flex: 1.4;
+}

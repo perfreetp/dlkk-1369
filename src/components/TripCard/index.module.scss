@@ -1,0 +1,143 @@
+@use '@/styles/variables.scss' as *;
+
+.hCard {
+  @include card-base;
+  display: flex;
+  gap: $spacing-md;
+  padding: $spacing-md;
+  @include press-feedback;
+}
+
+.hCover {
+  width: 240rpx;
+  height: 180rpx;
+  border-radius: $radius-md;
+  flex-shrink: 0;
+  background: $color-bg-card-secondary;
+}
+
+.hBody {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.hTitle {
+  font-size: $font-size-lg;
+  font-weight: $font-weight-semibold;
+  color: $color-text-primary;
+  @include text-ellipsis;
+  display: block;
+}
+
+.hMetaRow {
+  margin-top: 6rpx;
+}
+
+.hMeta {
+  font-size: $font-size-xs;
+  color: $color-text-tertiary;
+  @include text-ellipsis;
+  display: block;
+}
+
+.hStats {
+  display: flex;
+  align-items: center;
+  gap: $spacing-md;
+  margin-top: auto;
+  padding-top: $spacing-sm;
+}
+
+.hStatItem {
+  display: flex;
+  align-items: baseline;
+  gap: 6rpx;
+}
+
+.hStatNum {
+  font-size: $font-size-xl;
+  font-weight: $font-weight-bold;
+  color: $color-primary;
+}
+
+.hStatLabel {
+  font-size: $font-size-xs;
+  color: $color-text-tertiary;
+}
+
+.hStatDivider {
+  width: 1rpx;
+  height: 32rpx;
+  background: $color-divider;
+}
+
+.vCard {
+  @include card-base;
+  overflow: hidden;
+  @include press-feedback;
+}
+
+.vCover {
+  width: 100%;
+  height: 280rpx;
+  display: block;
+  background: $color-bg-card-secondary;
+}
+
+.vBody {
+  padding: $spacing-lg;
+}
+
+.vTitle {
+  font-size: $font-size-xl;
+  font-weight: $font-weight-semibold;
+  color: $color-text-primary;
+  @include text-ellipsis;
+  display: block;
+}
+
+.vStats {
+  display: flex;
+  align-items: center;
+  gap: $spacing-xl;
+  margin-top: $spacing-md;
+  padding: $spacing-md 0;
+  border-top: 1rpx solid $color-divider;
+  border-bottom: 1rpx solid $color-divider;
+}
+
+.vStatItem {
+  display: flex;
+  align-items: baseline;
+  gap: 8rpx;
+}
+
+.vStatNum {
+  font-size: $font-size-display;
+  font-weight: $font-weight-bold;
+  color: $color-primary;
+}
+
+.vStatLabel {
+  font-size: $font-size-sm;
+  color: $color-text-secondary;
+}
+
+.vStatDivider {
+  width: 1rpx;
+  height: 40rpx;
+  background: $color-divider;
+}
+
+.vMetaRow {
+  margin-top: $spacing-sm;
+}
+
+.vMeta {
+  font-size: $font-size-sm;
+  color: $color-text-tertiary;
+  @include text-ellipsis;
+  display: block;
+}

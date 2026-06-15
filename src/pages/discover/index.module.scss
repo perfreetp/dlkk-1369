@@ -1,0 +1,266 @@
+@use '@/styles/variables.scss' as *;
+
+.page {
+  min-height: 100vh;
+  background: linear-gradient(180deg, #EFF5EE 0%, $color-bg-page 30%);
+  padding-bottom: 40rpx;
+}
+
+.container {
+  padding: 0 $page-padding;
+}
+
+.hero {
+  padding-top: $spacing-xl;
+  padding-bottom: $spacing-lg;
+}
+
+.heroGreeting {
+  font-size: $font-size-sm;
+  color: $color-text-secondary;
+  display: block;
+}
+
+.heroTitle {
+  margin-top: 8rpx;
+  font-size: $font-size-xxl;
+  font-weight: $font-weight-bold;
+  color: $color-text-primary;
+  display: block;
+  line-height: 1.25;
+}
+
+.heroSubtitle {
+  margin-top: 12rpx;
+  font-size: $font-size-sm;
+  color: $color-text-tertiary;
+  line-height: $line-height-normal;
+  display: block;
+}
+
+.quickActions {
+  margin-top: $spacing-xl;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: $spacing-sm;
+  @include card-base;
+  padding: $spacing-lg $spacing-md;
+}
+
+.quickItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: $spacing-xs;
+  @include press-feedback;
+}
+
+.quickIcon {
+  width: 88rpx;
+  height: 88rpx;
+  border-radius: $radius-md;
+  @include flex-center;
+  font-size: 40rpx;
+  background: $color-primary-soft;
+}
+
+.quickLabel {
+  font-size: $font-size-xs;
+  color: $color-text-secondary;
+  font-weight: $font-weight-medium;
+}
+
+.seasonSection {
+  margin-top: $spacing-lg;
+}
+
+.seasonHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: $spacing-md;
+}
+
+.seasonTag {
+  background: linear-gradient(135deg, $color-primary 0%, $color-primary-light 100%);
+  padding: 8rpx 20rpx;
+  border-radius: $radius-round;
+  display: flex;
+  align-items: center;
+  gap: 8rpx;
+}
+
+.seasonTagText {
+  font-size: $font-size-sm;
+  font-weight: $font-weight-semibold;
+  color: $color-text-white;
+}
+
+.featuredScroll {
+  margin: 0 (-$page-padding);
+  padding-left: $page-padding;
+  @include scroll-x-container;
+}
+
+.featuredItem {
+  @include scroll-x-item(420rpx);
+  margin-right: $spacing-md;
+
+  &:last-child {
+    margin-right: $page-padding;
+  }
+}
+
+.wishlistCard {
+  margin-top: $spacing-lg;
+  @include card-base;
+  padding: $spacing-lg;
+}
+
+.wishlistTop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: $spacing-md;
+}
+
+.wishlistTitle {
+  font-size: $font-size-lg;
+  font-weight: $font-weight-semibold;
+  color: $color-text-primary;
+  display: flex;
+  align-items: center;
+  gap: 8rpx;
+}
+
+.wishlistProgress {
+  display: flex;
+  align-items: center;
+  gap: $spacing-md;
+  margin-bottom: $spacing-md;
+}
+
+.progressBar {
+  flex: 1;
+  height: 12rpx;
+  background: $color-bg-card-secondary;
+  border-radius: $radius-round;
+  overflow: hidden;
+}
+
+.progressFill {
+  height: 100%;
+  background: linear-gradient(90deg, $color-primary 0%, $color-primary-light 100%);
+  border-radius: $radius-round;
+}
+
+.progressText {
+  font-size: $font-size-sm;
+  font-weight: $font-weight-semibold;
+  color: $color-primary;
+  flex-shrink: 0;
+}
+
+.wishlistGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: $spacing-md;
+}
+
+.wishlistItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  @include press-feedback;
+}
+
+.wishlistThumb {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  border-radius: $radius-md;
+  background: $color-bg-card-secondary;
+}
+
+.wishlistName {
+  margin-top: $spacing-sm;
+  font-size: $font-size-xs;
+  color: $color-text-secondary;
+  @include text-ellipsis;
+  width: 100%;
+  text-align: center;
+}
+
+.wishlistObserved {
+  position: relative;
+
+  .wishlistThumb {
+    opacity: 0.5;
+  }
+  .wishlistName {
+    text-decoration: line-through;
+    color: $color-text-tertiary;
+  }
+  &::after {
+    content: '✓';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -60%);
+    font-size: 56rpx;
+    color: $color-success;
+    font-weight: $font-weight-bold;
+  }
+}
+
+.reminderSection {
+  margin-top: $spacing-lg;
+}
+
+.reminderCard {
+  @include card-base;
+  padding: $spacing-lg;
+  background: linear-gradient(135deg, $color-highlight-soft 0%, rgba(255, 235, 200, 0.3) 100%);
+  border-left: 6rpx solid $color-highlight;
+  @include press-feedback;
+}
+
+.reminderTop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: $spacing-sm;
+}
+
+.reminderTitle {
+  font-size: $font-size-lg;
+  font-weight: $font-weight-semibold;
+  color: $color-text-primary;
+  display: flex;
+  align-items: center;
+  gap: 8rpx;
+}
+
+.reminderCount {
+  background: $color-highlight;
+  color: #4A3520;
+  font-size: $font-size-xs;
+  font-weight: $font-weight-bold;
+  padding: 4rpx 14rpx;
+  border-radius: $radius-round;
+}
+
+.reminderDesc {
+  font-size: $font-size-sm;
+  color: $color-text-secondary;
+  line-height: $line-height-normal;
+}
+
+.recentSection {
+  margin-top: $spacing-lg;
+}
+
+.recentList {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-md;
+}

@@ -1,0 +1,226 @@
+@use '@/styles/variables.scss' as *;
+
+.page {
+  min-height: 100vh;
+  background: $color-bg-page;
+  display: flex;
+  flex-direction: column;
+}
+
+.mapPlaceholder {
+  width: 100%;
+  height: 62vh;
+  background: linear-gradient(135deg, #E8F0EC 0%, #D8E6DE 100%);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(47, 107, 79, 0.06) 1rpx, transparent 1rpx),
+      linear-gradient(90deg, rgba(47, 107, 79, 0.06) 1rpx, transparent 1rpx);
+    background-size: 60rpx 60rpx;
+  }
+}
+
+.mapHint {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  padding: 0 $spacing-xl;
+}
+
+.mapIcon {
+  font-size: 96rpx;
+  display: block;
+  margin-bottom: $spacing-md;
+  opacity: 0.8;
+}
+
+.mapTitle {
+  font-size: $font-size-lg;
+  font-weight: $font-weight-semibold;
+  color: $color-primary-dark;
+  display: block;
+}
+
+.mapSub {
+  margin-top: $spacing-xs;
+  font-size: $font-size-sm;
+  color: $color-text-secondary;
+  line-height: $line-height-normal;
+}
+
+.pinDots {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+
+.pinDot {
+  position: absolute;
+  width: 32rpx;
+  height: 32rpx;
+  border-radius: $radius-round;
+  background: $color-primary;
+  box-shadow: 0 0 0 8rpx rgba(47, 107, 79, 0.25);
+  transform: translate(-50%, -50%);
+
+  &::after {
+    content: attr(data-count);
+    position: absolute;
+    top: -56rpx;
+    left: 50%;
+    transform: translateX(-50%);
+    background: $color-primary;
+    color: $color-text-white;
+    font-size: $font-size-xs;
+    font-weight: $font-weight-bold;
+    padding: 6rpx 14rpx;
+    border-radius: $radius-round;
+    white-space: nowrap;
+  }
+}
+
+.pinDotActive {
+  width: 40rpx;
+  height: 40rpx;
+  background: $color-error;
+  box-shadow: 0 0 0 10rpx rgba(196, 75, 75, 0.25);
+  z-index: 3;
+}
+
+.filterPanel {
+  margin-top: -32rpx;
+  padding: 0 $page-padding;
+  position: relative;
+  z-index: 10;
+}
+
+.filterCard {
+  @include card-base;
+  padding: $spacing-md;
+  display: flex;
+  gap: $spacing-sm;
+  flex-wrap: wrap;
+}
+
+.filterTag {
+  padding: 12rpx 24rpx;
+  border-radius: $radius-button;
+  background: $color-bg-card-secondary;
+  font-size: $font-size-sm;
+  color: $color-text-secondary;
+  font-weight: $font-weight-medium;
+  @include press-feedback;
+}
+
+.filterTagActive {
+  background: $color-primary;
+  color: $color-text-white;
+}
+
+.statsRow {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: $spacing-md;
+  padding: $spacing-lg $page-padding 0;
+}
+
+.statItem {
+  @include card-base;
+  padding: $spacing-md;
+  text-align: center;
+}
+
+.statNum {
+  display: block;
+  font-size: $font-size-xxl;
+  font-weight: $font-weight-bold;
+  color: $color-primary;
+  line-height: 1.2;
+}
+
+.statLabel {
+  display: block;
+  margin-top: 4rpx;
+  font-size: $font-size-xs;
+  color: $color-text-tertiary;
+}
+
+.locationSection {
+  padding: $spacing-lg $page-padding;
+}
+
+.locationList {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-md;
+}
+
+.locationCard {
+  @include card-base;
+  padding: $spacing-lg;
+  display: flex;
+  align-items: center;
+  gap: $spacing-md;
+  @include press-feedback;
+}
+
+.locationInfo {
+  flex: 1;
+  min-width: 0;
+}
+
+.locationName {
+  display: block;
+  font-size: $font-size-lg;
+  font-weight: $font-weight-semibold;
+  color: $color-text-primary;
+  @include text-ellipsis;
+}
+
+.locationMeta {
+  margin-top: 8rpx;
+  display: flex;
+  align-items: center;
+  gap: $spacing-md;
+  flex-wrap: wrap;
+}
+
+.locationMetaItem {
+  font-size: $font-size-xs;
+  color: $color-text-tertiary;
+  display: flex;
+  align-items: center;
+  gap: 4rpx;
+}
+
+.locationBadge {
+  padding: 10rpx 20rpx;
+  background: $color-primary-soft;
+  border-radius: $radius-button;
+  font-size: $font-size-sm;
+  font-weight: $font-weight-semibold;
+  color: $color-primary;
+  flex-shrink: 0;
+}
+
+.obsPreview {
+  display: flex;
+  gap: $spacing-sm;
+  margin-top: $spacing-md;
+}
+
+.obsThumb {
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: $radius-sm;
+  background: $color-bg-card-secondary;
+  flex-shrink: 0;
+}

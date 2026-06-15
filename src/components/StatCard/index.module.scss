@@ -1,0 +1,68 @@
+@use '@/styles/variables.scss' as *;
+
+.card {
+  @include card-base;
+  padding: $spacing-lg;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8rpx;
+}
+
+.clickable {
+  @include press-feedback;
+}
+
+.icon {
+  font-size: 40rpx;
+  line-height: 1;
+  margin-bottom: 4rpx;
+}
+
+.value {
+  font-size: $font-size-display;
+  font-weight: $font-weight-bold;
+  color: $color-text-primary;
+  line-height: 1.1;
+}
+
+.label {
+  font-size: $font-size-sm;
+  color: $color-text-secondary;
+  font-weight: $font-weight-medium;
+}
+
+.subValue {
+  margin-top: 4rpx;
+  font-size: $font-size-xs;
+  color: $color-text-tertiary;
+}
+
+.variant-default {
+  background: $color-bg-card;
+  .value { color: $color-text-primary; }
+}
+
+.variant-primary {
+  background: linear-gradient(135deg, $color-primary 0%, $color-primary-light 100%);
+  .value, .label, .subValue, .icon { color: $color-text-white; }
+  .label { opacity: 0.85; }
+  .subValue { opacity: 0.7; }
+  box-shadow: 0 4rpx 20rpx rgba(47, 107, 79, 0.25);
+}
+
+.variant-accent {
+  background: linear-gradient(135deg, $color-accent 0%, $color-accent-light 100%);
+  .value, .label, .subValue, .icon { color: $color-text-white; }
+  .label { opacity: 0.85; }
+  .subValue { opacity: 0.7; }
+  box-shadow: 0 4rpx 20rpx rgba(166, 123, 91, 0.25);
+}
+
+.variant-highlight {
+  background: linear-gradient(135deg, #E8B756 0%, $color-highlight 100%);
+  .value, .label, .subValue, .icon { color: #4A3520; }
+  .label { opacity: 0.8; }
+  .subValue { opacity: 0.6; }
+  box-shadow: 0 4rpx 20rpx rgba(212, 168, 67, 0.25);
+}
