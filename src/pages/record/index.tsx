@@ -1,10 +1,11 @@
 import React, { useMemo, useState } from 'react';
-import { View, Text, Image } from '@tarojs/components';
+import { View, Text, Image, ScrollView } from '@tarojs/components';
 import Taro, { useDidShow } from '@tarojs/taro';
 import { useBirdingStore } from '@/store/useBirdingStore';
 import { relativeTime } from '@/utils/date';
 import ObservationCard from '@/components/ObservationCard';
 import EmptyState from '@/components/EmptyState';
+import CustomTabBar from '@/components/CustomTabBar';
 import styles from './index.module.scss';
 
 type FilterType = 'all' | 'incomplete' | 'photo' | 'audio';
@@ -62,7 +63,8 @@ const RecordPage: React.FC = () => {
 
   return (
     <View className={styles.page}>
-      <View className={styles.container}>
+      <ScrollView className={styles.scrollView} scrollY enhanced showScrollbar={false}>
+        <View className={styles.container}>
         <View className={styles.header}>
           <Text className={styles.pageTitle}>观察记录</Text>
           <Text className={styles.pageSubtitle}>
@@ -174,12 +176,16 @@ const RecordPage: React.FC = () => {
             />
           </View>
         )}
-      </View>
+        <View className={styles.bottomSpacer} />
+        </View>
+      </ScrollView>
 
       {/* 悬浮新建按钮 */}
       <View className={styles.fabButton} onClick={goNewRecord}>
         <Text className={styles.fabIcon}>+</Text>
       </View>
+
+      <CustomTabBar current="record" />
     </View>
   );
 };

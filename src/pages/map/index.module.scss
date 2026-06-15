@@ -3,8 +3,15 @@
 .page {
   min-height: 100vh;
   background: $color-bg-page;
-  display: flex;
-  flex-direction: column;
+  padding-bottom: calc(110rpx + env(safe-area-inset-bottom));
+}
+
+.scrollView {
+  height: 100vh;
+}
+
+.bottomSpacer {
+  height: $spacing-xl;
 }
 
 .mapPlaceholder {

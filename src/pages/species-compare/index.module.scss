@@ -309,3 +309,106 @@
 
   @include press-feedback;
 }
+
+/* 头部点击提示 */
+.headerHint {
+  display: block;
+  margin-top: 4rpx;
+  font-size: 20rpx;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+/* 快速对比组 */
+.quickPairs {
+  padding: $space-4 $space-5 $space-2;
+}
+
+.quickPairsTitle {
+  display: block;
+  font-size: $font-size-body-sm;
+  font-weight: 600;
+  color: $color-text-primary;
+  margin-bottom: $space-3;
+}
+
+.quickPairsScroll {
+  white-space: nowrap;
+}
+
+.quickPairChip {
+  display: inline-block;
+  padding: $space-2 $space-4;
+  margin-right: $space-2;
+  background: $color-bg-card-secondary;
+  border-radius: $radius-button;
+  font-size: $font-size-body-sm;
+  color: $color-text-secondary;
+  transition: all $transition-fast;
+
+  @include press-feedback;
+}
+
+.quickPairChipActive {
+  background: $color-primary;
+  color: $color-text-white;
+}
+
+/* 弹窗 */
+.modalMask {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.pickerPanel {
+  width: 100%;
+  max-height: 80vh;
+  background: $color-bg-card;
+  border-radius: $radius-xl $radius-xl 0 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.pickerHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: $space-4 $space-5;
+  border-bottom: 1px solid $color-divider;
+}
+
+.pickerTitle {
+  font-size: $font-size-body-lg;
+  font-weight: 600;
+  color: $color-text-primary;
+}
+
+.pickerClose {
+  font-size: 36rpx;
+  color: $color-text-tertiary;
+  padding: $space-1;
+  line-height: 1;
+}
+
+.pickerList {
+  flex: 1;
+  padding: $space-3 $space-5;
+}
+
+.pickerItem {
+  margin-bottom: $space-2;
+
+  @include press-feedback;
+}
+
+.pickerItemDisabled {
+  opacity: 0.4;
+  pointer-events: none;
+}

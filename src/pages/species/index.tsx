@@ -7,6 +7,7 @@ import SpeciesCard from '@/components/SpeciesCard';
 import SectionHeader from '@/components/SectionHeader';
 import EmptyState from '@/components/EmptyState';
 import { categoryToIcon } from '@/utils/format';
+import CustomTabBar from '@/components/CustomTabBar';
 import styles from './index.module.scss';
 
 const CATEGORIES = ['全部', '鸣禽', '猛禽', '涉禽', '游禽', '攀禽', '陆禽'];
@@ -63,7 +64,8 @@ const SpeciesPage: React.FC = () => {
 
   return (
     <View className={styles.page}>
-      <View className={styles.container}>
+      <ScrollView className={styles.scrollView} scrollY enhanced showScrollbar={false}>
+        <View className={styles.container}>
         <View className={styles.header}>
           <Text className={styles.pageTitle}>物种图鉴</Text>
           <Text className={styles.pageSubtitle}>
@@ -196,7 +198,10 @@ const SpeciesPage: React.FC = () => {
             </View>
           </View>
         )}
-      </View>
+        <View className={styles.bottomSpacer} />
+        </View>
+      </ScrollView>
+      <CustomTabBar current="species" />
     </View>
   );
 };

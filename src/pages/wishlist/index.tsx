@@ -61,12 +61,8 @@ const WishlistPage: React.FC = () => {
     const priorityCycle: WishlistItem['priority'][] = ['高', '中', '低'];
     const nextIdx = (priorityCycle.indexOf(currentPriority) + 1) % priorityCycle.length;
     const nextPriority = priorityCycle[nextIdx];
-    const item = wishlist.find(w => w.speciesId === speciesId);
-    if (item) {
-      actions.removeFromWishlist(speciesId);
-      actions.addToWishlist({ ...item, priority: nextPriority });
-      Taro.showToast({ title: `优先级: ${nextPriority}`, icon: 'none' });
-    }
+    actions.updateWishlistPriority(speciesId, nextPriority);
+    Taro.showToast({ title: `优先级: ${nextPriority}`, icon: 'none' });
   };
 
   const handleQuickAdd = (species: any) => {

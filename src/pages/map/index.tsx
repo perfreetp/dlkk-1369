@@ -1,8 +1,9 @@
 import React, { useMemo, useState } from 'react';
-import { View, Text, Image } from '@tarojs/components';
+import { View, Text, Image, ScrollView } from '@tarojs/components';
 import Taro, { useDidShow } from '@tarojs/taro';
 import { useBirdingStore } from '@/store/useBirdingStore';
 import SectionHeader from '@/components/SectionHeader';
+import CustomTabBar from '@/components/CustomTabBar';
 import styles from './index.module.scss';
 
 const MapPage: React.FC = () => {
@@ -73,6 +74,7 @@ const MapPage: React.FC = () => {
 
   return (
     <View className={styles.page}>
+      <ScrollView className={styles.scrollView} scrollY enhanced showScrollbar={false}>
       {/* 地图占位 */}
       <View className={styles.mapPlaceholder}>
         <View className={styles.pinDots}>
@@ -167,6 +169,9 @@ const MapPage: React.FC = () => {
           ))}
         </View>
       </View>
+        <View className={styles.bottomSpacer} />
+      </ScrollView>
+      <CustomTabBar current="map" />
     </View>
   );
 };

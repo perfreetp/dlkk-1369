@@ -3,11 +3,19 @@
 .page {
   min-height: 100vh;
   background: $color-bg-page;
-  padding-bottom: 40rpx;
+  padding-bottom: calc(110rpx + env(safe-area-inset-bottom));
+}
+
+.scrollView {
+  height: 100vh;
 }
 
 .container {
   padding: 0 $page-padding;
+}
+
+.bottomSpacer {
+  height: $spacing-xl;
 }
 
 .header {

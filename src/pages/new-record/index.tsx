@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { View, Text, Image, ScrollView, Input, Textarea, Picker } from '@tarojs/components';
 import Taro, { useRouter } from '@tarojs/taro';
 import { useBirdingStore } from '@/store/useBirdingStore';
-import { mockSpeciesList } from '@/data/mockSpecies';
+import { mockSpeciesList, getSeasonalSpecies } from '@/data/mockSpecies';
 import { getCurrentSeason, formatDate, formatTime } from '@/utils/date';
 import { weatherToText, categoryToIcon } from '@/utils/format';
 import type { BehaviorTag, Observation, ObservationPhoto, ObservationAudio } from '@/types';
@@ -51,7 +51,7 @@ const NewRecordPage: React.FC = () => {
   );
 
   const currentSeason = getCurrentSeason();
-  const seasonalSpecies = speciesList.filter(s => s.bestSeason.includes(currentSeason)).slice(0, 5);
+  const seasonalSpecies = getSeasonalSpecies(currentSeason).slice(0, 6);
 
   const handleSpeciesSelect = (s: typeof speciesList[0]) => {
     setSpeciesId(s.id);

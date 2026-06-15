@@ -8,6 +8,7 @@ import SectionHeader from '@/components/SectionHeader';
 import SpeciesCard from '@/components/SpeciesCard';
 import ObservationCard from '@/components/ObservationCard';
 import TagBadge from '@/components/TagBadge';
+import CustomTabBar from '@/components/CustomTabBar';
 import styles from './index.module.scss';
 
 const DiscoverPage: React.FC = () => {
@@ -56,7 +57,8 @@ const DiscoverPage: React.FC = () => {
 
   return (
     <View className={styles.page}>
-      <ScrollView scrollY className={styles.container}>
+      <ScrollView scrollY className={styles.scrollView} enhanced showScrollbar={false}>
+        <View className={styles.container}>
         {/* Hero 问候区 */}
         <View className={styles.hero}>
           <Text className={styles.heroGreeting}>你好，{user.nickname}</Text>
@@ -177,7 +179,7 @@ const DiscoverPage: React.FC = () => {
             title="最近的观察"
             subtitle="你最新的记录"
             actionText="全部"
-            onAction={() => Taro.switchTab({ url: '/pages/record/index' })}
+            onAction={() => Taro.redirectTo({ url: '/pages/record/index' })}
           />
           <View className={styles.recentList}>
             {recentObservations.map(obs => (
@@ -185,7 +187,10 @@ const DiscoverPage: React.FC = () => {
             ))}
           </View>
         </View>
+        <View className={styles.bottomSpacer} />
+        </View>
       </ScrollView>
+      <CustomTabBar current="discover" />
     </View>
   );
 };

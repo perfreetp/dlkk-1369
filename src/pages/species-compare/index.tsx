@@ -1,28 +1,38 @@
-import React, { useMemo } from 'react';
+import React, { useState, useMemo } from 'react';
 import { View, Text, Image, ScrollView } from '@tarojs/components';
 import Taro, { useRouter } from '@tarojs/taro';
-import { getSpeciesById } from '@/data/mockSpecies';
+import { mockSpeciesList, getSpeciesById } from '@/data/mockSpecies';
+import { categoryToIcon } from '@/utils/format';
 import EmptyState from '@/components/EmptyState';
+import SpeciesCard from '@/components/SpeciesCard';
 import styles from './index.module.scss';
+
+const DEFAULT_ID_A = 'sp-010';
+const DEFAULT_ID_B = 'sp-012';
 
 const SpeciesComparePage: React.FC = () => {
   const router = useRouter();
-  const id1 = router.params.id1;
-  const id2 = router.params.id2;
 
-  const species1 = useMemo(() => getSpeciesById(id1 || ''), [id1]);
-  const species2 = useMemo(() => getSpeciesById(id2 || ''), [id2]);
+  const paramA = (router.params.a || router.params.id1 || '').toString();
+  const paramB = (router.params.b || router.params.id2 || '').toString();
 
-  if (!species1 || !species2) {
+  const [speciesAId, setSpeciesAId] = useState(paramA || DEFAULT_ID_A);
+  const [speciesBId, setSpeciesBId] = useState(paramB || DEFAULT_ID_B);
+  const [showPicker, setShowPicker] = useState<'a' | 'b' | null>(null);
+
+  const speciesA = useMemo(() => getSpeciesById(speciesAId), [speciesAId]);
+  const speciesB = useMemo(() => getSpeciesById(speciesBId), [speciesBId]);
+
+  if (!speciesA || !speciesB) {
     return (
       <View className={styles.page}>
-        <EmptyState icon="🔍" title="缺少物种ID" description="请从物种详情页选择对比" />
+        <EmptyState icon="🔍" title="加载失败" description="物种信息不存在" />
       </View>
     );
   }
 
-  const s1 = species1;
-  const s2 = species2;
+  const s1 = speciesA;
+  const s2 = speciesB;
 
   const compareFields = [
     { label: '分类', icon: '🏷', field1: `${categoryToIcon(s1.category)} ${s1.category}`, field2: `${categoryToIcon(s2.category)} ${s2.category}`, same: s1.category === s2.category },
@@ -34,26 +44,69 @@ const SpeciesComparePage: React.FC = () => {
     { label: '保护级别', icon: '🛡', field1: s1.conservationStatus, field2: s2.conservationStatus, same: s1.conservationStatus === s2.conservationStatus },
   ];
 
+  const handlePickSpecies = (side: 'a' | 'b') => {
+    setShowPicker(side);
+  };
+
+  const handleSelectSpecies = (id: string) => {
+    if (showPicker === 'a') {
+      setSpeciesAId(id);
+    } else {
+      setSpeciesBId(id);
+    }
+    setShowPicker(null);
+  };
+
+  const quickPairs = [
+    { a: 'sp-001', b: 'sp-003', label: '麻雀 vs 山麻雀' },
+    { a: 'sp-010', b: 'sp-012', label: '白鹭 vs 大白鹭' },
+    { a: 'sp-008', b: 'sp-009', label: '喜鹊 vs 灰喜鹊' },
+    { a: 'sp-015', b: 'sp-016', label: '黑耳鸢 vs 红隼' },
+  ];
+
+  const handleQuickPair = (a: string, b: string) => {
+    setSpeciesAId(a);
+    setSpeciesBId(b);
+  };
+
   return (
     <View className={styles.page}>
       <ScrollView scrollY className={styles.scrollView} enhanced showScrollbar={false}>
         {/* 两物种头图对比 */}
         <View className={styles.headerCompare}>
-          <View className={styles.headerItem} onClick={() => Taro.redirectTo({ url: `/pages/species-detail/index?id=${s1.id}` })}>
+          <View className={styles.headerItem} onClick={() => handlePickSpecies('a')}>
             <Image className={styles.headerImg} src={s1.thumbUrl} mode="aspectFill" />
             <View className={styles.headerOverlay}>
               <Text className={styles.headerName}>{s1.commonName}</Text>
               <Text className={styles.headerLatin}>{s1.latinName}</Text>
+              <Text className={styles.headerHint}>点击更换 ▾</Text>
             </View>
           </View>
           <View className={styles.vsBadge}>VS</View>
-          <View className={styles.headerItem} onClick={() => Taro.redirectTo({ url: `/pages/species-detail/index?id=${s2.id}` })}>
+          <View className={styles.headerItem} onClick={() => handlePickSpecies('b')}>
             <Image className={styles.headerImg} src={s2.thumbUrl} mode="aspectFill" />
             <View className={styles.headerOverlay}>
               <Text className={styles.headerName}>{s2.commonName}</Text>
               <Text className={styles.headerLatin}>{s2.latinName}</Text>
+              <Text className={styles.headerHint}>点击更换 ▾</Text>
             </View>
           </View>
+        </View>
+
+        {/* 快速对比组 */}
+        <View className={styles.quickPairs}>
+          <Text className={styles.quickPairsTitle}>⚡ 快速对比</Text>
+          <ScrollView scrollX className={styles.quickPairsScroll} enhanced showScrollbar={false}>
+            {quickPairs.map(pair => (
+              <View
+                key={pair.label}
+                className={`${styles.quickPairChip} ${speciesAId === pair.a && speciesBId === pair.b ? styles.quickPairChipActive : ''}`}
+                onClick={() => handleQuickPair(pair.a, pair.b)}
+              >
+                {pair.label}
+              </View>
+            ))}
+          </ScrollView>
         </View>
 
         {/* 识别要点对比 */}
@@ -193,6 +246,32 @@ const SpeciesComparePage: React.FC = () => {
 
         <View style={{ height: 60 }} />
       </ScrollView>
+
+      {/* 物种选择弹窗 */}
+      {showPicker && (
+        <View className={styles.modalMask} onClick={() => setShowPicker(null)}>
+          <View className={styles.pickerPanel} onClick={e => e.stopPropagation()}>
+            <View className={styles.pickerHeader}>
+              <Text className={styles.pickerTitle}>选择{showPicker === 'a' ? '左侧' : '右侧'}对比物种</Text>
+              <Text className={styles.pickerClose} onClick={() => setShowPicker(null)}>✕</Text>
+            </View>
+            <ScrollView scrollY className={styles.pickerList} enhanced showScrollbar={false}>
+              {mockSpeciesList.map(sp => (
+                <View
+                  key={sp.id}
+                  className={`${styles.pickerItem} ${(showPicker === 'a' && sp.id === speciesBId) || (showPicker === 'b' && sp.id === speciesAId) ? styles.pickerItemDisabled : ''}`}
+                  onClick={() => {
+                    if ((showPicker === 'a' && sp.id === speciesBId) || (showPicker === 'b' && sp.id === speciesAId)) return;
+                    handleSelectSpecies(sp.id);
+                  }}
+                >
+                  <SpeciesCard data={sp} variant="list" />
+                </View>
+              ))}
+            </ScrollView>
+          </View>
+        </View>
+      )}
     </View>
   );
 };

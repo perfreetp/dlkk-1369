@@ -3,11 +3,19 @@
 .page {
   min-height: 100vh;
   background: linear-gradient(180deg, #EFF5EE 0%, $color-bg-page 30%);
-  padding-bottom: 40rpx;
+  padding-bottom: calc(110rpx + env(safe-area-inset-bottom));
+}
+
+.scrollView {
+  height: 100vh;
 }
 
 .container {
   padding: 0 $page-padding;
+}
+
+.bottomSpacer {
+  height: $spacing-xl;
 }
 
 .hero {

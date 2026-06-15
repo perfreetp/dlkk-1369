@@ -1,0 +1,70 @@
+@use '@/styles/variables.scss' as *;
+
+.page {
+  min-height: 100vh;
+  background: $color-bg-page;
+  padding-bottom: calc(110rpx + env(safe-area-inset-bottom));
+}
+
+.scrollView {
+  height: 100vh;
+}
+
+.container {
+  padding: $spacing-lg $page-padding 0;
+}
+
+.header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  padding: $spacing-xl 0 $spacing-lg;
+}
+
+.title {
+  display: block;
+  font-size: $font-size-xxl;
+  font-weight: $font-weight-bold;
+  color: $color-text-primary;
+  line-height: 1.25;
+}
+
+.subtitle {
+  display: block;
+  margin-top: $spacing-xs;
+  font-size: $font-size-sm;
+  color: $color-text-tertiary;
+}
+
+.newBtn {
+  display: flex;
+  align-items: center;
+  gap: $spacing-xs;
+  padding: $spacing-sm $spacing-md;
+  background: $color-primary;
+  color: $color-text-white;
+  border-radius: $radius-button;
+  @include press-feedback;
+}
+
+.newBtnIcon {
+  font-size: $font-size-lg;
+  font-weight: $font-weight-bold;
+  line-height: 1;
+}
+
+.newBtnText {
+  font-size: $font-size-sm;
+  font-weight: $font-weight-semibold;
+}
+
+.tripList {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-md;
+  margin-top: $spacing-md;
+}
+
+.bottomSpacer {
+  height: $spacing-xl;
+}
