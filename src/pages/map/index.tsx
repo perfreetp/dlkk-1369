@@ -140,7 +140,7 @@ const MapPage: React.FC = () => {
             <View
               key={loc.name}
               className={styles.locationCard}
-              onClick={() => Taro.switchTab({ url: '/pages/record/index' })}
+              onClick={() => Taro.redirectTo({ url: '/pages/record/index' })}
             >
               <View className={styles.locationInfo}>
                 <Text className={styles.locationName}>📍 {loc.name}</Text>

@@ -228,13 +228,13 @@ const SpeciesDetailPage: React.FC = () => {
               {speciesObservations.slice(0, 3).map(obs => (
                 <ObservationCard
                   key={obs.id}
-                  observation={obs}
+                  data={obs}
                   variant="compact"
                   onClick={() => Taro.navigateTo({ url: `/pages/observation-detail/index?id=${obs.id}` })}
                 />
               ))}
               {speciesObservations.length > 3 && (
-                <View className={styles.moreBtn} onClick={() => Taro.switchTab({ url: '/pages/record/index' })}>
+                <View className={styles.moreBtn} onClick={() => Taro.redirectTo({ url: '/pages/record/index' })}>
                   <Text>查看全部 {speciesObservations.length} 条记录 →</Text>
                 </View>
               )}
@@ -258,7 +258,7 @@ const SpeciesDetailPage: React.FC = () => {
               {similarSpecies.map(s => (
                 <View key={s.id} className={styles.similarCard}>
                   <SpeciesCard
-                    species={s}
+                    data={s}
                     variant="list"
                     onClick={() => Taro.redirectTo({ url: `/pages/species-detail/index?id=${s.id}` })}
                   />

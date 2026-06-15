@@ -25,8 +25,8 @@ const NewRecordPage: React.FC = () => {
   const [speciesSearch, setSpeciesSearch] = useState('');
   const [showSpeciesPicker, setShowSpeciesPicker] = useState(false);
 
-  const [date, setDate] = useState(editObservation ? editObservation.dateStr : formatDate(new Date()));
-  const [time, setTime] = useState(editObservation ? editObservation.timeStr : formatTime(new Date()));
+  const [date, setDate] = useState(editObservation ? editObservation.dateStr : formatDate(Date.now()));
+  const [time, setTime] = useState(editObservation ? editObservation.timeStr : formatTime(Date.now()));
   const [weatherIndex, setWeatherIndex] = useState(
     editObservation ? weatherOptions.indexOf(editObservation.weather) : 0
   );

@@ -1,6 +1,6 @@
 import React, { useMemo, useState } from 'react';
 import { View, Text, Image, ScrollView } from '@tarojs/components';
-import Taro, { useRouter } from '@tarojs/taro';
+import Taro from '@tarojs/taro';
 import { useBirdingStore } from '@/store/useBirdingStore';
 import TagBadge from '@/components/TagBadge';
 import SpeciesCard from '@/components/SpeciesCard';
@@ -203,7 +203,7 @@ const WishlistPage: React.FC = () => {
                 }}>
                   <View style={{ flex: 1 }}>
                     <SpeciesCard
-                      species={s}
+                      data={s}
                       variant="list"
                       onClick={() => {
                         if (!wishlist.some(w => w.speciesId === s.id)) {

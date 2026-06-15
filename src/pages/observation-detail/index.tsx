@@ -47,7 +47,7 @@ const ObservationDetailPage: React.FC = () => {
       <View className={styles.content}>
         {/* 物种信息 */}
         <View className={styles.speciesHeader}>
-          <Image className={styles.speciesThumb} src={observation.speciesThumb} mode="aspectFill" />
+          <Image className={styles.speciesThumb} src={observation.speciesThumb || ''} mode="aspectFill" />
           <View className={styles.speciesInfo}>
             <Text className={styles.speciesName}>{observation.speciesName}</Text>
             <Text className={styles.speciesLatin}>{species?.latinName}</Text>

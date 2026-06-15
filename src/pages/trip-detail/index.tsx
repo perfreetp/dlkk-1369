@@ -115,7 +115,7 @@ const TripDetailPage: React.FC = () => {
                 {uniqueSpecies.map(s => (
                   <SpeciesCard
                     key={s.id}
-                    species={s}
+                    data={s}
                     variant="list"
                     onClick={() => Taro.navigateTo({ url: `/pages/species-detail/index?id=${s.id}` })}
                   />
@@ -160,7 +160,7 @@ const TripDetailPage: React.FC = () => {
                       <Text style={{ fontSize: 24, color: '#8A94A6', fontWeight: 500 }}>{obs.timeStr}</Text>
                     </View>
                     <ObservationCard
-                      observation={obs}
+                      data={obs}
                       variant="compact"
                       onClick={() => Taro.navigateTo({ url: `/pages/observation-detail/index?id=${obs.id}` })}
                     />
@@ -177,7 +177,7 @@ const TripDetailPage: React.FC = () => {
                   marginTop: 24, padding: '16px 32px', display: 'inline-block',
                   background: '#2F6B4F', color: 'white', borderRadius: 999, fontSize: 26
                 }}
-                onClick={() => Taro.switchTab({ url: '/pages/record/index' })}
+                onClick={() => Taro.redirectTo({ url: '/pages/record/index' })}
               >
                 去添加记录
               </View>

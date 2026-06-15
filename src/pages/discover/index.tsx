@@ -7,7 +7,6 @@ import { getSeasonalSpecies } from '@/data/mockSpecies';
 import SectionHeader from '@/components/SectionHeader';
 import SpeciesCard from '@/components/SpeciesCard';
 import ObservationCard from '@/components/ObservationCard';
-import TagBadge from '@/components/TagBadge';
 import CustomTabBar from '@/components/CustomTabBar';
 import styles from './index.module.scss';
 
@@ -99,7 +98,7 @@ const DiscoverPage: React.FC = () => {
             </View>
             <Text
               className={styles.action}
-              onClick={() => Taro.switchTab({ url: '/pages/species/index' })}
+              onClick={() => Taro.redirectTo({ url: '/pages/species/index' })}
               style={{ fontSize: '24rpx', color: '#2F6B4F', fontWeight: 500 }}
             >
               查看全部 →
@@ -158,7 +157,7 @@ const DiscoverPage: React.FC = () => {
           <View className={styles.reminderSection}>
             <View
               className={styles.reminderCard}
-              onClick={() => Taro.switchTab({ url: '/pages/record/index' })}
+              onClick={() => Taro.redirectTo({ url: '/pages/record/index' })}
             >
               <View className={styles.reminderTop}>
                 <Text className={styles.reminderTitle}>

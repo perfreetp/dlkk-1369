@@ -92,7 +92,7 @@ const NewTripPage: React.FC = () => {
         if (editId) {
           Taro.redirectTo({ url: `/pages/trip-detail/index?id=${editId}` });
         } else {
-          Taro.switchTab({ url: '/pages/mine/index' });
+          Taro.redirectTo({ url: '/pages/trips/index' });
         }
       }, 800);
     }, 500);
@@ -182,7 +182,7 @@ const NewTripPage: React.FC = () => {
                   marginTop: 24, padding: '16px 32px', display: 'inline-block',
                   background: '#2F6B4F', color: 'white', borderRadius: 999, fontSize: 26
                 }}
-                onClick={() => Taro.switchTab({ url: '/pages/record/index' })}
+                onClick={() => Taro.redirectTo({ url: '/pages/record/index' })}
               >
                 去记录观察
               </View>

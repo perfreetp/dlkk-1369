@@ -1,17 +1,16 @@
 import React, { useMemo } from 'react';
 import { View, Text, Image, ScrollView } from '@tarojs/components';
-import Taro, { useRouter } from '@tarojs/taro';
+import Taro from '@tarojs/taro';
 import { useBirdingStore } from '@/store/useBirdingStore';
 import StatCard from '@/components/StatCard';
 import SpeciesCard from '@/components/SpeciesCard';
 import TagBadge from '@/components/TagBadge';
 import { getSpeciesById } from '@/data/mockSpecies';
+import type { Species } from '@/types';
 import styles from './index.module.scss';
 
 const StatsDetailPage: React.FC = () => {
-  const router = useRouter();
   const { monthlyStats, user } = useBirdingStore();
-  const month = router.params.month || `${monthlyStats.year}-${String(monthlyStats.month).padStart(2, '0')}`;
 
   const stats = monthlyStats;
 
@@ -19,11 +18,11 @@ const StatsDetailPage: React.FC = () => {
     return stats.topSpecies.map(ts => ({
       ...ts,
       species: getSpeciesById(ts.speciesId),
-    })).filter(item => item.species);
+    })).filter(item => item.species) as Array<{ speciesId: string; name: string; count: number; species: Species }>;
   }, [stats]);
 
   const newSpeciesWithDetails = useMemo(() => {
-    return stats.newSpecies.map(sid => getSpeciesById(sid)).filter(Boolean);
+    return stats.newSpecies.map(sid => getSpeciesById(sid)).filter(Boolean) as Species[];
   }, [stats]);
 
   const maxWeeklyValue = Math.max(...stats.weeklyDistribution, 1);
@@ -101,7 +100,7 @@ const StatsDetailPage: React.FC = () => {
               </View>
               <View style={{ flex: 1, marginLeft: 12 }}>
                 <SpeciesCard
-                  species={item.species!}
+                  data={item.species!}
                   variant="list"
                   onClick={() => Taro.navigateTo({ url: `/pages/species-detail/index?id=${item.speciesId}` })}
                 />
